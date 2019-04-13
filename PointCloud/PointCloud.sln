@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointCloud", "PointCloud.vcxproj", "{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		MinSizeRel|x64 = MinSizeRel|x64
+		Release|x64 = Release|x64
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.Debug|x64.ActiveCfg = Debug|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.Debug|x64.Build.0 = Debug|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.Release|x64.ActiveCfg = Release|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.Release|x64.Build.0 = Release|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87BCA3BD-47FC-3ABE-9F7C-202336B725C3}
+	EndGlobalSection
+EndGlobal
