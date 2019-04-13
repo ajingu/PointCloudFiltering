@@ -6,11 +6,12 @@
 #include <pcl/point_types.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <pcl/filters/voxel_grid.h>
+#include <pcl/registration/transforms.h>
 
 using namespace cv;
 using namespace std;
 
-#define MAX_NUM 3
+#define MAX_NUM 17
 #define DELTA_TRANSLATION_X 0.05
 
 
@@ -47,7 +48,7 @@ int main(int argc, char** argv)
 		src.convertTo(dst, CV_32FC1, 1 / 5000.0f);
 
 		cout << dst.cols << ", " << dst.rows << endl;
-
+        
 		pcl::PointCloud<pcl::PointXYZ> newCloud;
 		newCloud.width = dst.cols;
 		newCloud.height = dst.rows;
@@ -61,23 +62,34 @@ int main(int argc, char** argv)
 				float depth = dst.at<float>(row, col);
 
 				int idx = row * dst.cols + col;
+				
 				newCloud[idx].x = (col - cx) / fx * depth;
 				newCloud[idx].y = (row - cy) / fy * depth;
 				newCloud[idx].z = depth;
 			}
 		}
 
+
+		Eigen::Translation<float, 3> translation = Eigen::Translation<float, 3>(-DELTA_TRANSLATION_X * (i - 1), 0.0f, 0.0f);
+		Eigen::DiagonalMatrix<float, 3> scaling = Eigen::Scaling(-1.0f, -1.0f, 1.0f);
+		Eigen::Quaternionf rotate = Eigen::Quaternionf::Identity();
+		Eigen::Affine3f cameraMatrix = translation * scaling * rotate;
+		Eigen::Matrix4f transformMatrix = cameraMatrix.matrix();
+
+		pcl::transformPointCloud(newCloud, newCloud, transformMatrix);
+
 		masterCloud += newCloud;
 
 		cout << "new: " <<  newCloud.points.size() << endl;
 		cout << "master: " << masterCloud.points.size() << endl;
 
-		pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered = voxel_grid_filter(masterCloud.makeShared(), 0.05f);
+		pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered = voxel_grid_filter(masterCloud.makeShared(), 0.01f);
 		masterCloud.points = cloud_filtered->points;
 
 		viewer.removeAllPointClouds();
 		cout << "filtered: " << cloud_filtered->points.size() << endl;
 		viewer.addPointCloud(cloud_filtered, "cloud");
+		viewer.addCoordinateSystem(0.2, cameraMatrix, src_name, 0);
 		
 		while (!viewer.wasStopped())
 		{
