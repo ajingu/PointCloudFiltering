@@ -9,6 +9,6 @@
     <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
 </Project>

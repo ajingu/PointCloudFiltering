@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 
 	for (int i = 1; i < MAX_NUM + 1; i++)
 	{
-		string src_name = "../data/depth";
+		string src_name = "./data/depth";
 		if (i < 10)
 		{
 			src_name += "0";

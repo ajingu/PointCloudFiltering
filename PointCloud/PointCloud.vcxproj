@@ -22,7 +22,7 @@
     <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{47FD9157-3999-350E-A5BC-B97F6C7D0ECB}</ProjectGuid>
