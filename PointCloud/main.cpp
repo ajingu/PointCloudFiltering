@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	try
 	{
 		Intrinsics camera_intrinsics = {256.4, 202, 363, 364};
-		PointCloudVisualizer visualizer = PointCloudVisualizer("Simple Viewer"/*, camera_intrinsics*/);
+		PointCloudVisualizer visualizer = PointCloudVisualizer("Simple Viewer", camera_intrinsics);
 
 
 		for (int i = 1; i < MAX_NUM + 1; i++)
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 			Eigen::Matrix4f transformMatrix = cameraMatrix.matrix();
 
 
-			visualizer.addPointCloud(dst, color_mat, transformMatrix, camera_intrinsics);
+			visualizer.addPointCloud(dst, color_mat, transformMatrix);
 			visualizer.addCameraCoordinate(cameraMatrix, src_name);
 
 			while (!visualizer.wasStopped())

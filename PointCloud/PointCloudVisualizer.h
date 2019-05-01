@@ -24,14 +24,14 @@ class PointCloudVisualizer
 private:
 	pcl::visualization::PCLVisualizer viewer;
 	pcl::PointCloud<pcl::PointXYZRGB> master_cloud;
-	//Intrinsics camera_intrinsics;
+	Intrinsics camera_intrinsics;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr voxelGridFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud, float leaf_length);
 
 public:
-	PointCloudVisualizer(string name/*, const Intrinsics& _camera_intrinsics*/);
+	PointCloudVisualizer(string name, const Intrinsics& _camera_intrinsics);
 	bool wasStopped();
 	void addCameraCoordinate(Eigen::Affine3f& camera_mat, string name);
-	void addPointCloud(Mat& depth_mat, Mat& color_mat, Eigen::Matrix4f& transform_mat, Intrinsics& intrinsics);
+	void addPointCloud(Mat& depth_mat, Mat& color_mat, Eigen::Matrix4f& transform_mat);
 	void spinOnce();
 };

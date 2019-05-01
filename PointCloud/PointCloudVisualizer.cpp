@@ -1,12 +1,10 @@
 #include "PointCloudVisualizer.h"
 
-PointCloudVisualizer::PointCloudVisualizer(string name/*, const Intrinsics& _camera_intrinsics*/)
+PointCloudVisualizer::PointCloudVisualizer(string name, const Intrinsics& _camera_intrinsics)
 {
 	viewer.setWindowName(name);
 	master_cloud = pcl::PointCloud<pcl::PointXYZRGB>();
-	//camera_intrinsics = _camera_intrinsics;
-
-	//cout << camera_intrinsics.fx << endl;
+	camera_intrinsics = _camera_intrinsics;
 }
 
 bool PointCloudVisualizer::wasStopped()
@@ -15,7 +13,7 @@ bool PointCloudVisualizer::wasStopped()
 }
 
 
-void PointCloudVisualizer::addPointCloud(Mat& depth_mat, Mat& color_mat, Eigen::Matrix4f& transform_mat, Intrinsics& camera_intrinsics)
+void PointCloudVisualizer::addPointCloud(Mat& depth_mat, Mat& color_mat, Eigen::Matrix4f& transform_mat)
 {
 	pcl::PointCloud<pcl::PointXYZRGB> new_cloud;
 	int mat_cols = depth_mat.cols;
