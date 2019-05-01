@@ -44,8 +44,8 @@ int main(int argc, char** argv)
 			Eigen::Affine3f cameraMatrix = translation * scaling * rotate;
 			Eigen::Matrix4f transformMatrix = cameraMatrix.matrix();
 
-
-			visualizer.addPointCloud(dst, color_mat, transformMatrix);
+			bool apply_voxel_grid = (i % 2 == 0);
+			visualizer.addPointCloud(dst, color_mat, transformMatrix, apply_voxel_grid);
 			visualizer.addCameraCoordinate(cameraMatrix, src_name);
 
 			while (!visualizer.wasStopped())
