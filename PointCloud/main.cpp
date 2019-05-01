@@ -2,10 +2,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <pcl/io/pcd_io.h>  
-#include <pcl/point_types.h>
-#include <pcl/visualization/cloud_viewer.h>
-#include <pcl/filters/voxel_grid.h>
+#include <pcl/io/pcd_io.h>
 #include <pcl/registration/transforms.h>
 
 #include "PointCloudVisualizer.h"
