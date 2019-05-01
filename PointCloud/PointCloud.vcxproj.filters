@@ -10,5 +10,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PointCloudVisualizer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PointCloudVisualizer.h" />
   </ItemGroup>
 </Project>
